@@ -1,0 +1,8 @@
+#!/bin/sh 
+make clean
+make 
+echo "Enter test"
+read tst
+./vlist < tests/t"${tst}".in 
+echo "-----------------------"
+cat tests/t"${tst}".out

@@ -1,0 +1,25 @@
+insert
+title d
+http://www.youtube.com/watch?v=-J_DelcB5oU
+comment d
+4
+4
+insert
+title a
+http://www.youtube.com/watch?v=-J_DelcB5oU
+comment a
+1
+1
+insert
+title b
+http://www.youtube.com/watch?v=-J_DelcB5oU
+comment b
+2
+2
+insert
+title c
+http://www.youtube.com/watch?v=-J_DelcB5oU
+comment c
+3
+3
+print
