@@ -4,6 +4,4 @@ Implement a linked-list of pointers to objects.
 •information hiding
 •Designing a Linked List
 •dynamic memory allocation and deallocation
-
-Command   :  Action    :    Arguments**  :        Error
-insert : Insert a new video into the linked list :
+![alt text](https://github.com/jgutierrezCSU/Video-List-Repository/blob/test/cmd.jpg?raw=true)
