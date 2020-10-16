@@ -9,11 +9,17 @@ Implement a linked-list of pointers to objects.
 Example input:
 
 insert
+
 United Break Guitars
+
 http://www.youtube.com/watch?v=5YGc4zOqozo
+
 Great example of one person getting a giant company to listen
+
 4.5
+
 4
+
 
 insert
 Funny Cats
