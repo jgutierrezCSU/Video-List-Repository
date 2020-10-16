@@ -4,4 +4,4 @@ Implement a linked-list of pointers to objects.
 •information hiding
 •Designing a Linked List
 •dynamic memory allocation and deallocation
-![alt text](https://github.com/jgutierrezCSU/Video-List-Repository/blob/test/cmd.jpg?raw=true)
+![alt text](https://github.com/jgutierrezCSU/Video-List-Repository/blob/main/tests/cmds.png?raw=true)
