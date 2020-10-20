@@ -28,14 +28,15 @@ class Vlist
 	
 
     public:
-    	Vlist();
+    	Vlist();//constructor
+
     	~Vlist();
    		void insert(Video *videoptr);
    		bool check_duplicates(string title);
    		bool lookup(string lookup_video);
    		bool remove(string remove_video);
    		int length();
-        void print();
+      void print();
   
 	  
 }; // don't forget this ;

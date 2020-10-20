@@ -17,6 +17,18 @@ float length;
 int rating;
 int videoCount = 0;
 
+void cmd_help()
+{
+
+	cout << "Options:\nInsert: Insert a new video into the linked list (Title,  url, comment,length,rating)"<< endl;
+	cout << "Print: Print  all  the  videos  in  thelist  " << endl;
+	cout << "Length: Print the number of videosin the list as a single integer" << endl;
+	cout << "Lookup: If the given title is in thelist,  print the video " << endl;
+	cout << "Remove: If the given title is in thelist\n" << endl;
+	
+
+}
+
 
 
 int main()
@@ -24,18 +36,26 @@ int main()
 	//command given by user , needs to be insert , remove ,print , length or lookup.Else will terminate w/ cerr
 	string command;
 	const int MAX = 100;
+
+	cmd_help();
+	
 	// while loop for user input
 	while(getline(cin, command))
 	{	
+
 		//will insert users videos
 		if (command == "insert")
 		{
 				
-					
+					cout << "Title: ";
 					getline(cin,title);
+					cout << "Link: " ;
 					getline(cin,link);
+					cout << "Comment: " ;
 					getline(cin,comment);
+					cout << "Length (float): ";
 					cin >> length;
+					cout << "Rating (int): ";
 					cin >> rating;
 					cin.ignore();
 					
@@ -62,6 +82,7 @@ int main()
 		// user needs to look up video 
 		else if(command == "lookup")
 		{	
+			cout << "Title: ";
 			getline(cin,lookup_video);
 			//list.lookup(lookup_video);
 			//if title of video is not in list return false and print cerr
@@ -75,6 +96,7 @@ int main()
 		//user wants to remove video from list
 		else if(command == "remove")
 		{
+			cout << "Title: ";
 			//get what video need to be removed
 			getline(cin,remove_video);
 			//list.lookup(lookup_video);
@@ -87,6 +109,7 @@ int main()
 		// user wants to print length
 		else if(command == "length")
 		{
+			cout << "Number of Videos in list: ";
 			//print count from lookup function
 			cout << list.length() << endl;
 			//cout  << counter << endl;
@@ -100,11 +123,12 @@ int main()
 			
 		}
 
+
 		//user did not choose any valid arguments/commands
 		else{
 
-		cerr << "<" << command << "> is not a legal command, giving up." << endl;
-			return 1;
+		cerr << "<" << command << "> is not a legal command\n\n" << endl;
+			cmd_help();
 		}
 	}
 	
