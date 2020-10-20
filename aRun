@@ -3,6 +3,10 @@ make clean
 make 
 echo "Enter test"
 read tst
-./vlist < tests/t"${tst}".in 
+./vlist < tests/t"${tst}".in  > tmp # redirects test files into the program
+
+#needs finishing here
+tail -n +8 tmp # only displays the results needed for testing ( removes cout prompts)
 echo "-----------------------"
-cat tests/t"${tst}".out
+cat tests/t"${tst}".out # displays the expected results
+rm tmp
