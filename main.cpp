@@ -25,7 +25,7 @@ void cmd_help()
 	cout << "length: Print the number of videosin the list as a single integer" << endl;
 	cout << "lookup: If the given title is in thelist, print the video " << endl;
 	cout << "remove: Remove given title if in list" << endl;
-	cout << "print_by_length: prints all the videos in the list ordered by length (short to long),If two or more videos have the same length ,sorted alphabetically\n" << endl;
+	cout << "sort_by_length: sorts all the videos in the list ordered by length (short to long)\n" << endl;
 	
 	cout << "exit: Exit program\n" << endl;
 	
@@ -125,11 +125,12 @@ int main()
 			list.print();
 			
 		}
-		else if (command == "print_by_length")
+		else if (command == "sort_by_length")
 		{
-			//int size =list.length();
-			//int high = size;
-			list.print_by_length();
+			
+			
+			list.sort_by_length();
+			cout << "Sorted using Quick sort..." << endl;
 			
 		}
 		else if (command == "exit")

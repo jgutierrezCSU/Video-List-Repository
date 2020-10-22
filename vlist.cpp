@@ -120,6 +120,7 @@ bool Vlist::lookup(string lookup_video)
 //count of videos in list
 int Vlist::length()
 {
+
   Node*ptr = m_head;
   int counter = 0;
   while(ptr != NULL)
@@ -145,44 +146,29 @@ void Vlist::print()
   }
 }
 
- Vlist::Node *Vlist::helper_print_by_length(){
+ Vlist::Node *Vlist::sort_by_length(){
+
 
   Node *ptr = m_head;
-  cout << "helper" << endl;
-
-  //get address of LOW
-  cout << ptr->m_video_ptr->m_length << endl;
-  //int low =ptr
-
-  //get addres of HIGH
-  while (ptr != NULL)
-  {
-    if(ptr->m_next == NULL) cout << ptr->m_video_ptr->m_length << endl;
-    ptr = ptr->m_next;
-  }
-
+  quickSort(&m_head);
   return ptr;
 
 }
 
 
-void Vlist::print_by_length(){
 
 
-  cout << "inside print_by_length()" << endl;
-  cout << helper_print_by_length() << endl;
-}
+void Vlist::quickSort( Node **headRef) 
+{ 
+    Node *cur = m_head;
 
-int Vlist::partition( void *a, int low, int high ){
-
-
-  return 0;
-}
-
-void Vlist::quicksort( void *a, int low, int high ){
+    while (cur != NULL && cur->m_next != NULL) 
+          cur = cur->m_next; 
 
 
-}
+    (*headRef) = quickSortRecur(*headRef, cur); 
+    return; 
+} 
 
 
 
@@ -232,7 +218,7 @@ Vlist::Node *Vlist:: partition( Node *head,  Node *end,  Node **newHead,  Node *
 } 
 
   
-//here the sorting happens exclusive of the end node 
+
  Vlist::Node *Vlist::quickSortRecur( Node *head,  Node *end) 
 { 
     // base condition 
@@ -275,6 +261,11 @@ Vlist::Node *Vlist:: partition( Node *head,  Node *end,  Node **newHead,  Node *
   
     return newHead; 
 } 
+
+
+
+
+
 
 
 //constructor
