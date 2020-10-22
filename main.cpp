@@ -16,6 +16,7 @@ string comment;
 float length;
 int rating;
 int videoCount = 0;
+string rg_expression = "";
 
 void cmd_help()
 {
@@ -140,6 +141,16 @@ int main()
 			list.sort_by_rating();
 			cout << "Sorted using Quick sort..." << endl;
 			
+		}
+		else if (command == "lookup_expression")
+		{
+			
+			cout << "Enter regular expression (searches titles)" << endl;
+			cout << ":";
+			getline(cin, rg_expression);
+			list.lookup_expression(rg_expression);
+			
+
 		}
 		else if (command == "exit")
 		{

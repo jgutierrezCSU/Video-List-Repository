@@ -4,6 +4,8 @@
 
 #include<iostream>
 #include "vlist.h"
+
+#include <regex> 
 using namespace std;
 
 
@@ -175,7 +177,7 @@ void Vlist::quickSort( Node **headRef,string sort_cri)
           cur = cur->m_next; 
 
 
-    (*headRef) = quickSortRecur(*headRef, cur,sort_cri); 
+    (*headRef) = quickSortRecur(*headRef, cur, sort_cri); 
     return; 
 } 
 
@@ -280,6 +282,17 @@ Vlist::Node *Vlist:: partition( Node *head,  Node *end,  Node **newHead,  Node *
   
     return newHead; 
 } 
+
+void Vlist::lookup_expression(string rg_xp){
+
+  cout << rg_xp << endl;
+  regex b(rg_xp);
+  string a="astring";
+   if ( regex_match(a, b) ) 
+        cout << "String 'a' matches regular expression 'b' \n"; 
+
+
+}
 
 
 
