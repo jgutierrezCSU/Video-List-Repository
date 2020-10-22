@@ -133,6 +133,14 @@ int main()
 			cout << "Sorted using Quick sort..." << endl;
 			
 		}
+		else if (command == "sort_by_rating")
+		{
+			
+			
+			list.sort_by_rating();
+			cout << "Sorted using Quick sort..." << endl;
+			
+		}
 		else if (command == "exit")
 		{
 			

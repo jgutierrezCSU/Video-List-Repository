@@ -150,7 +150,16 @@ void Vlist::print()
 
 
   Node *ptr = m_head;
-  quickSort(&m_head);
+  quickSort(&m_head,"length");
+  return ptr;
+
+}
+
+ Vlist::Node *Vlist::sort_by_rating(){
+
+
+  Node *ptr = m_head;
+  quickSort(&m_head,"rating");
   return ptr;
 
 }
@@ -158,7 +167,7 @@ void Vlist::print()
 
 
 
-void Vlist::quickSort( Node **headRef) 
+void Vlist::quickSort( Node **headRef,string sort_cri) 
 { 
     Node *cur = m_head;
 
@@ -166,14 +175,14 @@ void Vlist::quickSort( Node **headRef)
           cur = cur->m_next; 
 
 
-    (*headRef) = quickSortRecur(*headRef, cur); 
+    (*headRef) = quickSortRecur(*headRef, cur,sort_cri); 
     return; 
 } 
 
 
 
 // Partitions the list taking the last element as the pivot 
-Vlist::Node *Vlist:: partition( Node *head,  Node *end,  Node **newHead,  Node **newEnd) 
+Vlist::Node *Vlist:: partition( Node *head,  Node *end,  Node **newHead,  Node **newEnd,string sort_cri) 
 { 
      Node *pivot = end; 
      Node *prev = NULL, *cur = head, *tail = pivot; 
@@ -182,7 +191,7 @@ Vlist::Node *Vlist:: partition( Node *head,  Node *end,  Node **newHead,  Node *
     // which is updated in the newHead and newEnd variables 
     while (cur != pivot) 
     { 
-        if (cur->m_video_ptr->m_length  < pivot-> m_video_ptr->m_length  ) 
+        if (sort_cri == "length" && cur->m_video_ptr->m_length  < pivot-> m_video_ptr->m_length  ) 
         { 
             // First node that has a value less than the pivot - becomes 
             // the new head 
@@ -192,6 +201,16 @@ Vlist::Node *Vlist:: partition( Node *head,  Node *end,  Node **newHead,  Node *
             prev = cur;  
             cur = cur->m_next; 
         } 
+        else if (sort_cri == "rating" && cur->m_video_ptr->m_rating  < pivot-> m_video_ptr->m_rating ){
+              // First node that has a value less than the pivot - becomes 
+            // the new head 
+            if ((*newHead) == NULL) 
+                (*newHead) = cur; 
+  
+            prev = cur;  
+            cur = cur->m_next; 
+
+        }
         else // If cur node is greater than pivot 
         { 
             // Move cur node to next of tail, and change tail 
@@ -219,7 +238,7 @@ Vlist::Node *Vlist:: partition( Node *head,  Node *end,  Node **newHead,  Node *
 
   
 
- Vlist::Node *Vlist::quickSortRecur( Node *head,  Node *end) 
+ Vlist::Node *Vlist::quickSortRecur( Node *head,  Node *end,string sort_cri) 
 { 
     // base condition 
     if (!head || head == end) 
@@ -229,7 +248,7 @@ Vlist::Node *Vlist:: partition( Node *head,  Node *end,  Node **newHead,  Node *
   
     // Partition the list, newHead and newEnd will be updated 
     // by the partition function 
-     Node *pivot = partition(head, end, &newHead, &newEnd); 
+     Node *pivot = partition(head, end, &newHead, &newEnd,sort_cri); 
   
     // If pivot is the smallest element - no need to recur for 
     // the left part. 
@@ -242,7 +261,7 @@ Vlist::Node *Vlist:: partition( Node *head,  Node *end,  Node **newHead,  Node *
         tmp->m_next = NULL; 
   
         // Recur for the list before pivot 
-        newHead = quickSortRecur(newHead, tmp); 
+        newHead = quickSortRecur(newHead, tmp,sort_cri); 
   
         // Change m_next of last node of the left half to pivot 
         Node *cur = NULL;
@@ -257,7 +276,7 @@ Vlist::Node *Vlist:: partition( Node *head,  Node *end,  Node **newHead,  Node *
     } 
   
     // Recur for the list after the pivot element 
-    pivot->m_next = quickSortRecur(pivot->m_next, newEnd); 
+    pivot->m_next = quickSortRecur(pivot->m_next, newEnd,sort_cri); 
   
     return newHead; 
 } 

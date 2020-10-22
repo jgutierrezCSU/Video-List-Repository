@@ -38,12 +38,13 @@ class Vlist
    		int length();
       void print();
      
-      void quickSort( Node **headRef);
+      void quickSort( Node **headRef,string sort_cri);
    
 
-      Node* partition( Node *head,  Node *end,  Node **newHead,  Node **newEnd);
-      Node* quickSortRecur( Node *head,  Node *end);
+      Node* partition( Node *head,  Node *end,  Node **newHead,  Node **newEnd,string sort_cri);
+      Node* quickSortRecur( Node *head,  Node *end,string sort_cri);
       Node* sort_by_length();
+      Node* sort_by_rating();
   
 	  
 }; // don't forget this ;
