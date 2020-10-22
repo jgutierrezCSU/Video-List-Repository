@@ -21,10 +21,13 @@ void cmd_help()
 {
 
 	cout << "Options:\nInsert: Insert a new video into the linked list (Title,  url, comment,length,rating)"<< endl;
-	cout << "Print: Print  all  the  videos  in  thelist  " << endl;
-	cout << "Length: Print the number of videosin the list as a single integer" << endl;
-	cout << "Lookup: If the given title is in thelist,  print the video " << endl;
-	cout << "Remove: If the given title is in thelist\n" << endl;
+	cout << "print: Print  all  the  videos  in  thelist  " << endl;
+	cout << "length: Print the number of videosin the list as a single integer" << endl;
+	cout << "lookup: If the given title is in thelist, print the video " << endl;
+	cout << "remove: Remove given title if in list" << endl;
+	cout << "print_by_length: prints all the videos in the list ordered by length (short to long),If two or more videos have the same length ,sorted alphabetically\n" << endl;
+	
+	cout << "exit: Exit program\n" << endl;
 	
 
 }
@@ -120,6 +123,19 @@ int main()
 		{
 			
 			list.print();
+			
+		}
+		else if (command == "print_by_length")
+		{
+			//int size =list.length();
+			//int high = size;
+			list.print_by_length();
+			
+		}
+		else if (command == "exit")
+		{
+			
+			return 0;
 			
 		}
 

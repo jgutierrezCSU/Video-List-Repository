@@ -5,6 +5,10 @@
 #include<iostream>
 #include "vlist.h"
 using namespace std;
+
+
+
+
 //vlist function will remove video which was passed on from main
 bool Vlist::remove(string remove_video)
 {
@@ -86,21 +90,7 @@ bool Vlist::check_duplicates(string title)
   //false means no duplicates
   return false;
 }
-//count of videos in list
-int Vlist::length()
-{
-	Node*ptr = m_head;
-  int counter = 0;
-  while(ptr != NULL)
-  {
-    ptr = ptr->m_next;
-    //increment each time we go from node to node
-    counter++;
-  }
-  //pass counter to main where it will be printed
-  return counter;
 
-}
 
 //lookup function where video is passed from main
 //boolean function will return true if it found a video in the list 
@@ -127,6 +117,22 @@ bool Vlist::lookup(string lookup_video)
   return false;// no video in list , return false and print cerr in main
 }
 
+//count of videos in list
+int Vlist::length()
+{
+  Node*ptr = m_head;
+  int counter = 0;
+  while(ptr != NULL)
+  {
+    ptr = ptr->m_next;
+    //increment each time we go from node to node
+    counter++;
+  }
+  //pass counter to main where it will be printed
+  return counter;
+
+}
+
 //print the list ...(hence the title)
 void Vlist::print()
 {
@@ -137,9 +143,140 @@ void Vlist::print()
     ptr->m_video_ptr->print();
     ptr = ptr->m_next;
   }
+}
+
+ Vlist::Node *Vlist::helper_print_by_length(){
+
+  Node *ptr = m_head;
+  cout << "helper" << endl;
+
+  //get address of LOW
+  cout << ptr->m_video_ptr->m_length << endl;
+  //int low =ptr
+
+  //get addres of HIGH
+  while (ptr != NULL)
+  {
+    if(ptr->m_next == NULL) cout << ptr->m_video_ptr->m_length << endl;
+    ptr = ptr->m_next;
+  }
+
+  return ptr;
+
+}
+
+
+void Vlist::print_by_length(){
+
+
+  cout << "inside print_by_length()" << endl;
+  cout << helper_print_by_length() << endl;
+}
+
+int Vlist::partition( void *a, int low, int high ){
+
+
+  return 0;
+}
+
+void Vlist::quicksort( void *a, int low, int high ){
 
 
 }
+
+
+
+// Partitions the list taking the last element as the pivot 
+Vlist::Node *Vlist:: partition( Node *head,  Node *end,  Node **newHead,  Node **newEnd) 
+{ 
+     Node *pivot = end; 
+     Node *prev = NULL, *cur = head, *tail = pivot; 
+  
+    // During partition, both the head and end of the list might change 
+    // which is updated in the newHead and newEnd variables 
+    while (cur != pivot) 
+    { 
+        if (cur->m_video_ptr->m_length  < pivot-> m_video_ptr->m_length  ) 
+        { 
+            // First node that has a value less than the pivot - becomes 
+            // the new head 
+            if ((*newHead) == NULL) 
+                (*newHead) = cur; 
+  
+            prev = cur;  
+            cur = cur->m_next; 
+        } 
+        else // If cur node is greater than pivot 
+        { 
+            // Move cur node to next of tail, and change tail 
+            if (prev) 
+                prev->m_next = cur->m_next; 
+             Node *tmp = cur->m_next; 
+            cur->m_next = NULL; 
+            tail->m_next = cur; 
+            tail = cur; 
+            cur = tmp; 
+        } 
+    } 
+  
+    // If the pivot data is the smallest element in the current list, 
+    // pivot becomes the head 
+    if ((*newHead) == NULL) 
+        (*newHead) = pivot; 
+  
+    // Update newEnd to the current last node 
+    (*newEnd) = tail; 
+  
+    // Return the pivot node 
+    return pivot; 
+} 
+
+  
+//here the sorting happens exclusive of the end node 
+ Vlist::Node *Vlist::quickSortRecur( Node *head,  Node *end) 
+{ 
+    // base condition 
+    if (!head || head == end) 
+        return head; 
+  
+    Node *newHead = NULL, *newEnd = NULL; 
+  
+    // Partition the list, newHead and newEnd will be updated 
+    // by the partition function 
+     Node *pivot = partition(head, end, &newHead, &newEnd); 
+  
+    // If pivot is the smallest element - no need to recur for 
+    // the left part. 
+    if (newHead != pivot) 
+    { 
+        // Set the node before the pivot node as NULL 
+         Node *tmp = newHead; 
+        while (tmp->m_next != pivot) 
+            tmp = tmp->m_next; 
+        tmp->m_next = NULL; 
+  
+        // Recur for the list before pivot 
+        newHead = quickSortRecur(newHead, tmp); 
+  
+        // Change m_next of last node of the left half to pivot 
+        Node *cur = NULL;
+
+        cur=newHead;
+        while (cur != NULL && cur->m_next != NULL) 
+          cur = cur->m_next; 
+
+        tmp=cur;
+        //tmp = getTail(newHead); 
+        tmp->m_next = pivot; 
+    } 
+  
+    // Recur for the list after the pivot element 
+    pivot->m_next = quickSortRecur(pivot->m_next, newEnd); 
+  
+    return newHead; 
+} 
+
+
 //constructor
 Vlist::Vlist()
 {

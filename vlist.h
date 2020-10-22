@@ -37,6 +37,14 @@ class Vlist
    		bool remove(string remove_video);
    		int length();
       void print();
+      void print_by_length();
+      
+      void quicksort( void *a, int low, int high);
+      int partition( void *a, int low, int high );
+
+      Node* partition( Node *head,  Node *end,  Node **newHead,  Node **newEnd);
+      Node* quickSortRecur( Node *head,  Node *end);
+      Node* helper_print_by_length();
   
 	  
 }; // don't forget this ;
