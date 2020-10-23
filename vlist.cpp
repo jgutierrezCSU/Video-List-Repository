@@ -5,9 +5,18 @@
 #include <fstream>
 #include<iostream>
 #include "vlist.h"
-
+#include<vector>
 #include <regex> 
 using namespace std;
+
+  
+   string remove_trailing_zeros(string str) { 
+    str.erase ( str.find_last_not_of('0') + 1, std::string::npos ); 
+    str.erase ( str.find_last_not_of('.') + 1, std::string::npos );   
+    return str; 
+  }
+
+
 
 void Vlist::write_to_file(){
 
@@ -26,6 +35,7 @@ void Vlist::write_to_file(){
 
       string tmp_length= to_string(ptr->m_video_ptr->m_length);
       string a_length =tmp_length.substr (0,5);
+      a_length=remove_trailing_zeros(a_length);
 
         a_String= ptr->m_video_ptr->m_title + ", " + ptr->m_video_ptr->m_link + ", " + ptr->m_video_ptr->m_comment + ", " + a_length + ", " ;
         string a_Rating_string = "";
@@ -36,8 +46,6 @@ void Vlist::write_to_file(){
     
         a_final_string= a_String + a_Rating_string + "\n";
 
-      ofstream myfile;
-      myfile.open ("vlr.csv",ios_base::app);
       myfile << a_final_string;
      
 
@@ -51,6 +59,20 @@ void Vlist::write_to_file(){
 }
 void Vlist::read_from_file(){
 
+vector<char> v;
+  if (FILE *fp = fopen("vlr.csv", "r"))
+  {
+    char buf[1024];
+    while (size_t len = fread(buf, 1, sizeof(buf), fp))
+      v.insert(v.end(), buf, buf + len);
+    fclose(fp);
+  }
+
+  cout << "\nfrom read func: \n";
+  int size = (int)v.size();
+  for(int i = 0; i < size; i++)
+    cout << v[i] ;
+  cout << endl;
 
 
   
