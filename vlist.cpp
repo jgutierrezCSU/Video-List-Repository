@@ -9,7 +9,43 @@
 #include <regex> 
 using namespace std;
 
+void Vlist::write_to_file(){
 
+
+  // function creates a local saved csv file after insert, video list was sorted or item was removed.
+
+    ofstream myfile;
+    myfile.open ("vlr.csv");
+    string a_String = "";
+    string a_final_string = "";
+    Node *ptr = m_head;
+
+    // pointer goes through the list and appends each video on the list after it already has been sorted
+    while(ptr != NULL)
+    {
+
+        a_String= ptr->m_video_ptr->m_title + ", " + ptr->m_video_ptr->m_link + ", " + ptr->m_video_ptr->m_comment + ", " + to_string(ptr->m_video_ptr->m_length) + ", " ;
+        string a_Rating_string = "";
+    
+        for (int ratingCount = 0; ratingCount < ptr->m_video_ptr->m_rating; ratingCount++){
+             a_Rating_string = "*" + a_Rating_string;
+          }
+    
+        a_final_string= a_String + a_Rating_string + "\n";
+
+      ofstream myfile;
+      myfile.open ("vlr.csv",ios_base::app);
+      myfile << a_final_string;
+     
+
+      ptr = ptr->m_next;
+    }
+
+     myfile.close();
+
+
+
+}
 void Vlist::read_from_file(){
 
 
@@ -79,36 +115,8 @@ void Vlist::insert(Video *video_ptr)
     ptr->m_next = new Node(video_ptr, ptr->m_next);
     
   }
+  write_to_file();
 
-
-
-    ofstream myfile;
-    myfile.open ("vlr.csv");
-    string a_String = "";
-    string a_final_string = "";
-    Node *ptr = m_head;
-
-    while(ptr != NULL)
-    {
-
-        a_String= ptr->m_video_ptr->m_title + ", " + ptr->m_video_ptr->m_link + ", " + ptr->m_video_ptr->m_comment + ", " + to_string(ptr->m_video_ptr->m_length) + ", " ;
-        string a_Rating_string = "";
-    
-        for (int ratingCount = 0; ratingCount < ptr->m_video_ptr->m_rating; ratingCount++){
-             a_Rating_string = "*" + a_Rating_string;
-          }
-    
-        a_final_string= a_String + a_Rating_string + "\n";
-
-      ofstream myfile;
-      myfile.open ("vlr.csv",ios_base::app);
-      myfile << a_final_string;
-     
-
-      ptr = ptr->m_next;
-    }
-
-     myfile.close();
 
 }
 //boolean funtion will check if there are any duplicate videos and return tru or false
