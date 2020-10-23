@@ -207,3 +207,11 @@ sort_by_length
 print
 sort_by_rating
 print
+lookup_expression
+(xfr)(.*)
+lookup_expression
+(cc)(.*)
+lookup_expression
+(z)(.*)
+lookup_expression
+(-8)(.*)

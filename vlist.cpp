@@ -284,13 +284,33 @@ Vlist::Node *Vlist:: partition( Node *head,  Node *end,  Node **newHead,  Node *
 } 
 
 void Vlist::lookup_expression(string rg_xp){
+    bool is_found =false;
+   // while(an_error == false){
+            
+            try {
+                    regex search_exp(rg_xp);     
+                    Node *ptr = m_head;
+                  while(ptr != NULL)
+                   {
+                      // if found the video in the list , print it
+                        if(regex_search(ptr->m_video_ptr->m_title, search_exp))
+                        {
+                              ptr->m_video_ptr->print();  
+                              is_found = true;
+                         
+                         }   
+                  
+                        ptr = ptr->m_next;
+                    }
+                    if(is_found == false)
+                      cout << "Regular expression <"<< rg_xp << "> does not match any titles in list"<< endl;
+                }
 
-  cout << rg_xp << endl;
-  regex b(rg_xp);
-  string a="astring";
-   if ( regex_match(a, b) ) 
-        cout << "String 'a' matches regular expression 'b' \n"; 
-
+            catch (const regex_error& err) { 
+                    cout << "There was a regex_error caughted: " << err.what() << '\n'; 
+                    //an_error =true;
+               } 
+     // }      
 
 }
 
