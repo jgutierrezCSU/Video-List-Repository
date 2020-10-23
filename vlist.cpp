@@ -73,6 +73,10 @@ bool Vlist::remove(string remove_video)
     //delete temp pointer , avoid seg fault
     delete temp_videoptr1;
     delete temp;
+
+      //list modified, update local csv
+      write_to_file();
+
   }
   else
   {
@@ -89,6 +93,10 @@ bool Vlist::remove(string remove_video)
     ptr->m_next = ptr->m_next->m_next;
     delete temp_videoptr;
     delete temp;
+
+    //list modified, update local csv
+    write_to_file();
+
   }  
   return true;
 }
@@ -115,6 +123,7 @@ void Vlist::insert(Video *video_ptr)
     ptr->m_next = new Node(video_ptr, ptr->m_next);
     
   }
+  //list modified, update local csv
   write_to_file();
 
 
