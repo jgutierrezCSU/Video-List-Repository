@@ -76,8 +76,7 @@ int main()
 					Video *video_ptr = new Video(title,link,comment,length ,rating );
 					// passing pointer to object in vlist
 					list.insert(video_ptr);
-
-					list.write_to_file(video_ptr);
+					//list.write_to_file(video_ptr);
 					 }
 					 //if there are duplicates print our cerr
 					 else{

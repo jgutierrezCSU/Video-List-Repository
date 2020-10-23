@@ -31,30 +31,6 @@ void Video::print()
 	cout << endl;
 }
 
-void Video::write_vid_to_file()
-{
-
-    string a_String = "";
-    string a_Rating_string = "";
-    string a_final_string = "";
-
-    a_String= m_title + ", " + m_link + ", " + m_comment + ", " + to_string(m_length) + ", " ;
-
-    
-    for (int ratingCount = 0; ratingCount < m_rating; ratingCount++){
-         a_Rating_string = "*" + a_Rating_string;
-    }
-    
-    a_final_string= a_String + a_Rating_string + "\n";
-
-  ofstream myfile;
-  myfile.open ("vlr",ios_base::app);
-  myfile << a_final_string;
-  myfile.close();
-  
-
-
-}
 
 
 void Video::read_from_file()

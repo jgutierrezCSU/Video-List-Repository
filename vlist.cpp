@@ -2,19 +2,13 @@
 //Gutierrez,jesus
 //jgutierrez
 
+#include <fstream>
 #include<iostream>
 #include "vlist.h"
 
 #include <regex> 
 using namespace std;
 
-void Vlist::write_to_file(Video *videoptr)
-{
-
-    videoptr->write_vid_to_file();
-
-   
-}
 
 void Vlist::read_from_file(){
 
@@ -83,9 +77,38 @@ void Vlist::insert(Video *video_ptr)
       ptr = ptr->m_next;
     }
     ptr->m_next = new Node(video_ptr, ptr->m_next);
+    
   }
 
-  
+
+
+    ofstream myfile;
+    myfile.open ("vlr.csv");
+    string a_String = "";
+    string a_final_string = "";
+    Node *ptr = m_head;
+
+    while(ptr != NULL)
+    {
+
+        a_String= ptr->m_video_ptr->m_title + ", " + ptr->m_video_ptr->m_link + ", " + ptr->m_video_ptr->m_comment + ", " + to_string(ptr->m_video_ptr->m_length) + ", " ;
+        string a_Rating_string = "";
+    
+        for (int ratingCount = 0; ratingCount < ptr->m_video_ptr->m_rating; ratingCount++){
+             a_Rating_string = "*" + a_Rating_string;
+          }
+    
+        a_final_string= a_String + a_Rating_string + "\n";
+
+      ofstream myfile;
+      myfile.open ("vlr.csv",ios_base::app);
+      myfile << a_final_string;
+     
+
+      ptr = ptr->m_next;
+    }
+
+     myfile.close();
 
 }
 //boolean funtion will check if there are any duplicate videos and return tru or false
@@ -298,7 +321,6 @@ Vlist::Node *Vlist:: partition( Node *head,  Node *end,  Node **newHead,  Node *
 
 void Vlist::lookup_expression(string rg_xp){
     bool is_found =false;
-   // while(an_error == false){
             
             try {
                     regex search_exp(rg_xp);     
@@ -322,8 +344,7 @@ void Vlist::lookup_expression(string rg_xp){
             catch (const regex_error& err) { 
                     cout << "There was a regex_error caughted: " << err.what() << '\n'; 
                     //an_error =true;
-               } 
-     // }      
+               }     
 
 }
 

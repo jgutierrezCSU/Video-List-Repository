@@ -43,7 +43,6 @@ class Vlist
       Node* sort_by_length();
       Node* sort_by_rating();
       void lookup_expression(string rg_xp);
-      void write_to_file(Video *videoptr);
       void read_from_file();
 	  
 }; // don't forget this ;
