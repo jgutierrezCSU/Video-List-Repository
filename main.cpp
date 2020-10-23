@@ -39,9 +39,10 @@ int main()
 {
 	//command given by user , needs to be insert , remove ,print , length or lookup.Else will terminate w/ cerr
 	string command;
-	const int MAX = 100;
+	const int MAX = 1000;
 
 	cmd_help();
+	list.read_from_file();
 	
 	// while loop for user input
 	while(getline(cin, command))
@@ -75,11 +76,14 @@ int main()
 					Video *video_ptr = new Video(title,link,comment,length ,rating );
 					// passing pointer to object in vlist
 					list.insert(video_ptr);
+
+					list.write_to_file(video_ptr);
 					 }
 					 //if there are duplicates print our cerr
 					 else{
 					 	cerr << "Could not insert video <" << title << ">, already in list." << endl;
 					 }
+
 					
 					
 		}

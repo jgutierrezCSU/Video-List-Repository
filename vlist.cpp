@@ -8,7 +8,20 @@
 #include <regex> 
 using namespace std;
 
+void Vlist::write_to_file(Video *videoptr)
+{
 
+    videoptr->write_vid_to_file();
+
+   
+}
+
+void Vlist::read_from_file(){
+
+
+
+  
+}
 
 
 //vlist function will remove video which was passed on from main

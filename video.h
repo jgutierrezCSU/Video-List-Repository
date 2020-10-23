@@ -18,6 +18,8 @@ class Video
     public:
         Video(string title , string link, string comment,double length , int rating);
         void print();
+        void write_vid_to_file();
+        void read_from_file();
         int videoCount = 0;
          string m_title;
 	    string m_link;
