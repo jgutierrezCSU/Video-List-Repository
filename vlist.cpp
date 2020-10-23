@@ -22,9 +22,12 @@ void Vlist::write_to_file(){
 
     // pointer goes through the list and appends each video on the list after it already has been sorted
     while(ptr != NULL)
-    {
+    { 
 
-        a_String= ptr->m_video_ptr->m_title + ", " + ptr->m_video_ptr->m_link + ", " + ptr->m_video_ptr->m_comment + ", " + to_string(ptr->m_video_ptr->m_length) + ", " ;
+      string tmp_length= to_string(ptr->m_video_ptr->m_length);
+      string a_length =tmp_length.substr (0,5);
+
+        a_String= ptr->m_video_ptr->m_title + ", " + ptr->m_video_ptr->m_link + ", " + ptr->m_video_ptr->m_comment + ", " + a_length + ", " ;
         string a_Rating_string = "";
     
         for (int ratingCount = 0; ratingCount < ptr->m_video_ptr->m_rating; ratingCount++){
