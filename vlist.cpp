@@ -1,12 +1,12 @@
 
 //Gutierrez,jesus
 //jgutierrez
-
-#include <fstream>
+#include<string>
+#include<fstream>
 #include<iostream>
 #include "vlist.h"
 #include<vector>
-#include <regex> 
+#include<regex> 
 using namespace std;
 
   
@@ -37,7 +37,7 @@ void Vlist::write_to_file(){
       string a_length =tmp_length.substr (0,5);
       a_length=remove_trailing_zeros(a_length);
 
-        a_String= ptr->m_video_ptr->m_title + ", " + ptr->m_video_ptr->m_link + ", " + ptr->m_video_ptr->m_comment + ", " + a_length + ", " ;
+        a_String= ptr->m_video_ptr->m_title + "," + ptr->m_video_ptr->m_link + "," + ptr->m_video_ptr->m_comment + "," + a_length + "," ;
         string a_Rating_string = "";
     
         for (int ratingCount = 0; ratingCount < ptr->m_video_ptr->m_rating; ratingCount++){
@@ -59,24 +59,111 @@ void Vlist::write_to_file(){
 }
 void Vlist::read_from_file(){
 
-vector<char> v;
-  if (FILE *fp = fopen("vlr.csv", "r"))
-  {
-    char buf[1024];
-    while (size_t len = fread(buf, 1, sizeof(buf), fp))
-      v.insert(v.end(), buf, buf + len);
-    fclose(fp);
+  string title,link,comment,an_item,rating,length ,line;
+  double t_length = -1;
+  int t_rating = -2;
+  cout << "loading files..." << endl;
+
+  ifstream aStream("vlr.csv");
+  while(getline(aStream,line)){
+    istringstream s(line);
+    int count =0;
+      while(getline(s,an_item,',')){
+        if(count == 0)
+        title = an_item;
+        if(count == 1)
+        link = an_item;
+        if(count == 2)
+        comment = an_item;
+        if(count == 3){
+        length = an_item;
+        t_length = atof(length.c_str());
+        }
+        if(count == 4){
+        rating = an_item;
+        t_rating = rating.size();
+        }
+        count++;
+     
+      
+    }
+     // cout << "tlclr" << endl;
+      //cout << title << link << comment << t_length << t_rating << endl;
+      if (check_duplicates(title) == false){
+          //if no duplicates create new VIDEO objects DYNAMICALLY
+          Video *video_ptr = new Video(title,link,comment,t_length ,t_rating );
+          // passing pointer to object in vlist
+          insert(video_ptr);
+          //list.write_to_file(video_ptr);
+           }
+
+     
+
+
   }
 
-  cout << "\nfrom read func: \n";
-  int size = (int)v.size();
-  for(int i = 0; i < size; i++)
-    cout << v[i] ;
-  cout << endl;
+
 
 
   
-}
+    // cout << "READING" << endl;
+    //  ifstream din;
+    //  string filename="vlr.csv";
+    //  din.open(filename.c_str());
+    //  if (din.fail())
+    //   {
+    //       cerr << "Could not open file: " << filename << endl;
+    //       //return false;
+    //   }
+
+
+    //  while(din >> title >> link >> comment >> length >> rating){
+    //   cout << title << link << comment << length << rating << endl;
+    //  }
+    //  din.close();
+
+
+
+
+
+
+
+
+  // if (FILE *fp = fopen("vlr.csv", "r"))
+  // {
+  //   cout << "\nfrom read func: \n";
+  //   char buf[1024];
+  //   //while (size_t len = fread(buf, 1, sizeof(buf), fp)){
+
+  //     while (size_t len = fread(buf, 1, sizeof(buf), fp) ) {
+
+  //     getline(astringy,title);
+  //     cout << "title " << title << " " ; 
+
+  //   //   getline(astringy, link, ',') ;
+  //   //   cout << "link: " << link << " " ;
+
+  //   //   getline(astringy, comment, ',') ;
+  //   //   cout << "comment: " << comment << " "  ; 
+
+  //   //   getline(astringy, length, ',') ;
+  //   //   cout << "length: " << length << " "  ; 
+
+  //   //   getline(astringy, rating);
+  //   //  cout << "rating: " <<  rating << " "  ;
+  //    }
+  //     //parse buff here
+  //     //cout << buf << endl;
+  //    fclose(fp);
+  //   }
+     // v.insert(v.end(), buf, buf + len);
+    //Video *video_ptr = new Video(title,link,comment,length ,rating );
+   
+  }
+
+
+    
+//}
 
 
 //vlist function will remove video which was passed on from main

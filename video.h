@@ -18,6 +18,7 @@ class Video
     public:
         Video(string title , string link, string comment,double length , int rating);
         void print();
+        //void insert_from_local_file(string title , string link, string comment,string length , string rating);
         int videoCount = 0;
          string m_title;
 	    string m_link;

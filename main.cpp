@@ -42,6 +42,9 @@ int main()
 	const int MAX = 1000;
 
 	cmd_help();
+	
+	// reads from file previoulsy written in
+	// funtion has local file where videos are stored, these file are loaded here
 	list.read_from_file();
 	
 	// while loop for user input
@@ -82,8 +85,6 @@ int main()
 					 else{
 					 	cerr << "Could not insert video <" << title << ">, already in list." << endl;
 					 }
-
-					
 					
 		}
 		// user needs to look up video 
@@ -155,6 +156,15 @@ int main()
 			
 
 		}
+
+		//temporary cmd for testing..will load automatically when starting prog
+		// else if (command == "read")
+		// {
+			
+			
+		// 	list.read_from_file();
+			
+		// }
 		else if (command == "exit")
 		{
 			

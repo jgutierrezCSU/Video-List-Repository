@@ -31,21 +31,13 @@ void Video::print()
 	cout << endl;
 }
 
+// void insert_from_local_file(string title , string link, string comment,string length , string rating){
+
+// Video *video_ptr = new Video(title,link,comment,length ,rating );
+// }
 
 
-void Video::read_from_file()
-{
 
-  /*vector<char> v;
-  if (FILE *fp = fopen("vlr", "r"))
-  {
-    char buf[1024];
-    while (size_t len = fread(buf, 1, sizeof(buf), fp))
-      v.insert(v.end(), buf, buf + len);
-    fclose(fp);
-  }*/
-
-}
 
 
 
