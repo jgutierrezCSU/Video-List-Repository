@@ -59,35 +59,38 @@ void Vlist::write_to_file(){
 }
 void Vlist::read_from_file(){
 
-  string title,link,comment,an_item,rating,length ,line;
-  double t_length = -1;
-  int t_rating = -2;
+  string title,link,comment,an_item,rating,length ,line ,a_filename;
+  double t_length = -1; // for debugging
+  int t_rating = -2; // for debugging
   cout << "loading files..." << endl;
+ 
 
-  ifstream aStream("vlr.csv");
-  while(getline(aStream,line)){
-    istringstream s(line);
-    int count =0;
-      while(getline(s,an_item,',')){
-        if(count == 0)
-        title = an_item;
-        if(count == 1)
-        link = an_item;
-        if(count == 2)
-        comment = an_item;
-        if(count == 3){
-        length = an_item;
-        t_length = atof(length.c_str());
-        }
-        if(count == 4){
-        rating = an_item;
-        t_rating = rating.size();
-        }
-        count++;
-     
-      
-    }
-     // cout << "tlclr" << endl;
+  a_filename ="vlr.csv";
+  ifstream aStream(a_filename);
+  if(!aStream)
+    cout << "Could not" << a_filename << endl;
+    else{
+      while(getline(aStream,line)){
+        istringstream s(line);
+       int count =0;
+          while(getline(s,an_item,',')){
+            if(count == 0)
+            title = an_item;
+            if(count == 1)
+           link = an_item;
+            if(count == 2)
+            comment = an_item;
+            if(count == 3){
+           length = an_item;
+           t_length = atof(length.c_str());
+           }
+           if(count == 4){
+           rating = an_item;
+           t_rating = rating.size();
+           }
+           count++;
+           
+           }
       //cout << title << link << comment << t_length << t_rating << endl;
       if (check_duplicates(title) == false){
           //if no duplicates create new VIDEO objects DYNAMICALLY
@@ -95,71 +98,13 @@ void Vlist::read_from_file(){
           // passing pointer to object in vlist
           insert(video_ptr);
           //list.write_to_file(video_ptr);
-           }
+       }
 
      
-
-
-  }
-
-
-
-
-  
-    // cout << "READING" << endl;
-    //  ifstream din;
-    //  string filename="vlr.csv";
-    //  din.open(filename.c_str());
-    //  if (din.fail())
-    //   {
-    //       cerr << "Could not open file: " << filename << endl;
-    //       //return false;
-    //   }
-
-
-    //  while(din >> title >> link >> comment >> length >> rating){
-    //   cout << title << link << comment << length << rating << endl;
-    //  }
-    //  din.close();
-
-
-
-
-
-
-
-
-  // if (FILE *fp = fopen("vlr.csv", "r"))
-  // {
-  //   cout << "\nfrom read func: \n";
-  //   char buf[1024];
-  //   //while (size_t len = fread(buf, 1, sizeof(buf), fp)){
-
-  //     while (size_t len = fread(buf, 1, sizeof(buf), fp) ) {
-
-  //     getline(astringy,title);
-  //     cout << "title " << title << " " ; 
-
-  //   //   getline(astringy, link, ',') ;
-  //   //   cout << "link: " << link << " " ;
-
-  //   //   getline(astringy, comment, ',') ;
-  //   //   cout << "comment: " << comment << " "  ; 
-
-  //   //   getline(astringy, length, ',') ;
-  //   //   cout << "length: " << length << " "  ; 
-
-  //   //   getline(astringy, rating);
-  //   //  cout << "rating: " <<  rating << " "  ;
-  //    }
-  //     //parse buff here
-  //     //cout << buf << endl;
-  //    fclose(fp);
-  //   }
-     // v.insert(v.end(), buf, buf + len);
-    //Video *video_ptr = new Video(title,link,comment,length ,rating );
+      }
+    }
    
-  }
+}
 
 
     

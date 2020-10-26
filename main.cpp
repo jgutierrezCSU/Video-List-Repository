@@ -21,14 +21,15 @@ string rg_expression = "";
 void cmd_help()
 {
 
-	cout << "Options:\nInsert: Insert a new video into the linked list (Title,  url, comment,length,rating)"<< endl;
-	cout << "print: Print  all  the  videos  in  thelist  " << endl;
-	cout << "length: Print the number of videosin the list as a single integer" << endl;
-	cout << "lookup: If the given title is in thelist, print the video " << endl;
-	cout << "remove: Remove given title if in list" << endl;
-	cout << "sort_by_length: sorts all the videos in the list ordered by length (short to long)\n" << endl;
-	
-	cout << "exit: Exit program\n" << endl;
+	cout << "Options:\n<insert> Insert a new video into the linked list (Title,  url, comment,length,rating)"<< endl;
+	cout << "<print> Print  all  the  videos  in  thelist  " << endl;
+	cout << "<length> Print the number of videosin the list as a single integer" << endl;
+	cout << "<lookup> If given title is in the list, print the video " << endl;
+	cout << "<remove> Remove given title if in list" << endl;
+	cout << "<sort_by_length> Sorts videos in list ordered by length (short to long)" << endl;
+	cout << "<sort_by_rating> Sorts videos in list ordered by rating (short to long)" << endl;
+	cout << "<lookup_expression> Use any regular expression to search through list."<< endl;
+	cout << "<exit> Exit program" << endl;
 	
 
 }
@@ -42,7 +43,7 @@ int main()
 	const int MAX = 1000;
 
 	cmd_help();
-	
+
 	// reads from file previoulsy written in
 	// funtion has local file where videos are stored, these file are loaded here
 	list.read_from_file();

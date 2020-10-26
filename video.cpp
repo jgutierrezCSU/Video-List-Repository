@@ -31,12 +31,6 @@ void Video::print()
 	cout << endl;
 }
 
-// void insert_from_local_file(string title , string link, string comment,string length , string rating){
-
-// Video *video_ptr = new Video(title,link,comment,length ,rating );
-// }
-
-
 
 
 
