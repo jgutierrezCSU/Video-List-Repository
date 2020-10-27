@@ -42,6 +42,7 @@ class Vlist
       Node* quickSortRecur( Node *head,  Node *end,string sort_cri);
       Node* sort_by_length();
       Node* sort_by_rating();
+      Node* sort_by_title();
       void lookup_expression(string rg_xp);
       void write_to_file();
       void read_from_file();

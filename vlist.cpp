@@ -186,6 +186,8 @@ void Vlist::insert(Video *video_ptr)
 
 
 }
+
+
 //boolean funtion will check if there are any duplicate videos and return tru or false
 
 bool Vlist::check_duplicates(string title)
@@ -277,6 +279,15 @@ void Vlist::print()
 
 }
 
+ Vlist::Node *Vlist::sort_by_title(){
+
+
+  Node *ptr = m_head;
+  quickSort(&m_head,"title");
+  return ptr;
+
+}
+
 
 
 
@@ -315,6 +326,16 @@ Vlist::Node *Vlist:: partition( Node *head,  Node *end,  Node **newHead,  Node *
             cur = cur->m_next; 
         } 
         else if (sort_cri == "rating" && cur->m_video_ptr->m_rating  < pivot-> m_video_ptr->m_rating ){
+              // First node that has a value less than the pivot - becomes 
+            // the new head 
+            if ((*newHead) == NULL) 
+                (*newHead) = cur; 
+  
+            prev = cur;  
+            cur = cur->m_next; 
+
+        }
+        else if (sort_cri == "title" && cur->m_video_ptr->m_title  < pivot-> m_video_ptr->m_title ){
               // First node that has a value less than the pivot - becomes 
             // the new head 
             if ((*newHead) == NULL) 

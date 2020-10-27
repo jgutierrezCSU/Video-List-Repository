@@ -28,6 +28,7 @@ void cmd_help()
 	cout << "<remove> Remove given title if in list" << endl;
 	cout << "<sort_by_length> Sorts videos in list ordered by length (short to long)" << endl;
 	cout << "<sort_by_rating> Sorts videos in list ordered by rating (short to long)" << endl;
+	cout << "<sort_by_title> Sorts videos in list alphabetically title (ascending)" << endl;
 	cout << "<lookup_expression> Use any regular expression to search through list."<< endl;
 	cout << "<exit> Exit program" << endl;
 	
@@ -147,6 +148,15 @@ int main()
 			cout << "Sorted using Quick sort..." << endl;
 			
 		}
+
+		else if (command == "sort_by_title")
+		{
+			
+			
+			list.sort_by_title();
+			cout << "Sorted using Quick sort..." << endl;
+			
+		}
 		else if (command == "lookup_expression")
 		{
 			
@@ -158,14 +168,6 @@ int main()
 
 		}
 
-		//temporary cmd for testing..will load automatically when starting prog
-		// else if (command == "read")
-		// {
-			
-			
-		// 	list.read_from_file();
-			
-		// }
 		else if (command == "exit")
 		{
 			
