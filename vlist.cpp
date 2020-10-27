@@ -34,7 +34,7 @@ void Vlist::write_to_file(){
     { 
 
       string tmp_length= to_string(ptr->m_video_ptr->m_length);
-      string a_length =tmp_length.substr (0,5);
+      string a_length =tmp_length.substr (0,5); // arbitrary length size
       a_length=remove_trailing_zeros(a_length);
 
         a_String= ptr->m_video_ptr->m_title + "," + ptr->m_video_ptr->m_link + "," + ptr->m_video_ptr->m_comment + "," + a_length + "," ;
@@ -62,36 +62,37 @@ void Vlist::read_from_file(){
   string title,link,comment,an_item,rating,length ,line ,a_filename;
   double t_length = -1; // for debugging
   int t_rating = -2; // for debugging
-  cout << "loading files..." << endl;
+  cout << "loading files..... Done" << endl;
  
 
   a_filename ="vlr.csv";
   ifstream aStream(a_filename);
   if(!aStream)
-    cout << "Could not" << a_filename << endl;
+    cout << "Could not find" << a_filename << endl;
     else{
       while(getline(aStream,line)){
         istringstream s(line);
        int count =0;
+          // for each item (string or strings of letters) upto to the comma.
           while(getline(s,an_item,',')){
             if(count == 0)
             title = an_item;
-            if(count == 1)
+            else if(count == 1)
            link = an_item;
-            if(count == 2)
+            else if(count == 2)
             comment = an_item;
-            if(count == 3){
+            else if(count == 3){
            length = an_item;
            t_length = atof(length.c_str());
            }
-           if(count == 4){
+           else if(count == 4){
            rating = an_item;
            t_rating = rating.size();
            }
            count++;
            
            }
-      //cout << title << link << comment << t_length << t_rating << endl;
+   
       if (check_duplicates(title) == false){
           //if no duplicates create new VIDEO objects DYNAMICALLY
           Video *video_ptr = new Video(title,link,comment,t_length ,t_rating );
