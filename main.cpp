@@ -21,16 +21,16 @@ string rg_expression = "";
 void cmd_help()
 {
 
-	cout << "Options:\n<insert> Insert a new video into the linked list (Title,  url, comment,length,rating)"<< endl;
-	cout << "<print> Print  all  the  videos  in  thelist  " << endl;
-	cout << "<length> Print the number of videosin the list as a single integer" << endl;
-	cout << "<lookup> If given title is in the list, print the video " << endl;
-	cout << "<remove> Remove given title if in list" << endl;
-	cout << "<sort_by_length> Sorts videos in list ordered by length (short to long)" << endl;
-	cout << "<sort_by_rating> Sorts videos in list ordered by rating (short to long)" << endl;
-	cout << "<sort_by_title> Sorts videos in list alphabetically title (ascending)" << endl;
-	cout << "<lookup_expression> Use any regular expression to search through list."<< endl;
-	cout << "<exit> Exit program" << endl;
+	cout << "OPTIONS:\ninsert: Insert a new video into the linked list (Title,  url, comment,length,rating)"<< endl;
+	cout << "print: Print  all  the  videos  in  thelist  " << endl;
+	cout << "length: Print the number of videos in the list as a single integer" << endl;
+	cout << "lookup: If given title is in the list, print the video " << endl;
+	cout << "remove: Remove given title if in list" << endl;
+	cout << "sort_by_length: Sorts videos in list ordered by length (short to long)" << endl;
+	cout << "sort_by_rating: Sorts videos in list ordered by rating (short to long)" << endl;
+	cout << "sort_by_title: Sorts videos in list alphabetically title (ascending)" << endl;
+	cout << "lookup_expression: Use any regular expression to search through list."<< endl;
+	cout << "exit: Exit program" << endl;
 	
 
 }
