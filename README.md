@@ -8,6 +8,8 @@ Implement a linked-list of pointers to objects.
 
 ![alt text](https://github.com/jgutierrezCSU/Video-List-Repository/blob/main/tests/cmds.png?raw=true)
 
+--- NOT UPDATED ------
+
 Example input:
 
 insert
