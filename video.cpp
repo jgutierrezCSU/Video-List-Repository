@@ -24,6 +24,7 @@ void Video::print()
 {
     cout << m_title << ", " << m_link << ", " << m_comment << ", ";
     cout << m_length << ", " ;
+    //
 
 	for (int ratingCount = 0; ratingCount < m_rating; ratingCount++){
 		cout << "*";

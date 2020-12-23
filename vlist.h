@@ -3,6 +3,7 @@
 //jgutierrez
 
 // The following prevent this file from being included more than once
+//
 #ifndef Vlist_H
 #define Vlist_H
 #include "video.h"
