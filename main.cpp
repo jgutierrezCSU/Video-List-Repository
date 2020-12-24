@@ -30,7 +30,7 @@ void cmd_help()
 	cout << "sort_by_rating: Sorts videos in list ordered by rating (short to long)" << endl;
 	cout << "sort_by_title: Sorts videos in list alphabetically title (ascending)" << endl;
 	cout << "lookup_expression: Use any regular expression to search through list."<< endl;
-	cout << "exit: Exit program" << endl;
+	cout << "exit: Exit program\n" << endl;
 	
 
 }

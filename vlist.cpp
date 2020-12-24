@@ -5,7 +5,6 @@
 #include<fstream>
 #include<iostream>
 #include "vlist.h"
-#include<vector>
 #include<regex> 
 using namespace std;
 
@@ -62,7 +61,7 @@ void Vlist::read_from_file(){
   string title,link,comment,an_item,rating,length ,line ,a_filename;
   double t_length = -1; // for debugging
   int t_rating = -2; // for debugging
-  cout << "loading files..... Done" << endl;
+  cout << "loading files..... Done\n" << endl;
  
 
   a_filename ="vlr.csv";
