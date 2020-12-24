@@ -61,13 +61,13 @@ void Vlist::read_from_file(){
   string title,link,comment,an_item,rating,length ,line ,a_filename;
   double t_length = -1; // for debugging
   int t_rating = -2; // for debugging
-  cout << "loading files..... Done\n" << endl;
+  cout << "looking file..... Done\n" << endl;
  
 
   a_filename ="vlr.csv";
   ifstream aStream(a_filename);
   if(!aStream)
-    cout << "Could not find" << a_filename << endl;
+    cout << "Could not find " << a_filename << ", Please create list." << endl;
     else{
       while(getline(aStream,line)){
         istringstream s(line);
@@ -155,6 +155,7 @@ bool Vlist::remove(string remove_video)
     write_to_file();
 
   }  
+  cout << "Removed.." << endl;
   return true;
 }
 
