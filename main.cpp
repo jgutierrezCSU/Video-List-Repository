@@ -45,6 +45,7 @@ int main()
 
 	cmd_help();
 
+	//
 	// reads from file previoulsy written in
 	// funtion has local file where videos are stored, these file are loaded here
 	list.read_from_file();

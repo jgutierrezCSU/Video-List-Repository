@@ -3,6 +3,7 @@
 //jgutierrez
 
 // The following prevent this file from being included more than once
+//
 #ifndef Video_H
 #define Video_H
 
@@ -28,6 +29,7 @@ class Video
     private:
 	   
 }; // don't forget this ;
+//
 
 
 // part of the mechanism that prevents this file from being included multiple times
