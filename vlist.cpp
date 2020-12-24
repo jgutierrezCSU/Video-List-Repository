@@ -429,7 +429,13 @@ void Vlist::lookup_expression(string rg_xp){
                               ptr->m_video_ptr->print();  
                               is_found = true;
                          
-                         }   
+                         }
+                         if(regex_search(ptr->m_video_ptr->m_comment, search_exp))
+                        {
+                              ptr->m_video_ptr->print();  
+                              is_found = true;
+                         
+                         }      
                   
                         ptr = ptr->m_next;
                     }

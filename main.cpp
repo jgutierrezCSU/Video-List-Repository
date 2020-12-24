@@ -161,7 +161,7 @@ int main()
 		else if (command == "lookup_expression")
 		{
 			
-			cout << "Enter regular expression (searches titles)" << endl;
+			cout << "Enter regular expression (searches titles AND Comments)" << endl;
 			cout << ":";
 			getline(cin, rg_expression);
 			list.lookup_expression(rg_expression);
