@@ -13,3 +13,7 @@ Implement a linked-list of pointers to objects.
 INSERT:
 
 ![alt text](https://github.com/jgutierrezCSU/Video-List-Repository/blob/main/imgs/insert.JPG?raw=true)
+
+SORT: 
+
+![alt text](https://github.com/jgutierrezCSU/Video-List-Repository/blob/main/imgs/sort.JPG?raw=true)
