@@ -138,7 +138,7 @@ int main()
 			
 			
 			list.sort_by_length();
-			cout << "Sorted using Quick sort..." << endl;
+			cout << "Sorted using Quick sort...\n" << endl;
 			
 		}
 		else if (command == "sort_by_rating")
@@ -155,7 +155,7 @@ int main()
 			
 			
 			list.sort_by_title();
-			cout << "Sorted using Quick sort..." << endl;
+			cout << "Sorted using Quick sort...\n" << endl;
 			
 		}
 		else if (command == "lookup_expression")
