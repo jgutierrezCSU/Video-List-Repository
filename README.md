@@ -6,7 +6,7 @@ Implement a linked-list of pointers to objects.
 •dynamic memory allocation and deallocation
 •implement Quick Sort with linked list using pointers
 
-![alt text](https://github.com/jgutierrezCSU/Video-List-Repository/blob/main/tests/cmds.png?raw=true)
+![alt text](https://github.com/jgutierrezCSU/Video-List-Repository/blob/main/imgs/cmds.png?raw=true)
 
 --- NOT UPDATED ------
 
