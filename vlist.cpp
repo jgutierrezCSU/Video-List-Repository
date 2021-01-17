@@ -36,7 +36,7 @@ void Vlist::write_to_file(){
       string a_length =tmp_length.substr (0,5); // arbitrary length size
       a_length=remove_trailing_zeros(a_length);
 
-        a_String= ptr->m_video_ptr->m_title + "," + ptr->m_video_ptr->m_link + "," + ptr->m_video_ptr->m_comment + "," + a_length + "," ;
+        a_String= ptr->m_video_ptr->m_title + "," + ptr->m_video_ptr->m_link + "," + ptr->m_video_ptr->m_description + "," + a_length + "," ;
         string a_Rating_string = "";
     
         for (int ratingCount = 0; ratingCount < ptr->m_video_ptr->m_rating; ratingCount++){
@@ -58,7 +58,7 @@ void Vlist::write_to_file(){
 }
 void Vlist::read_from_file(){
 
-  string title,link,comment,an_item,rating,length ,line ,a_filename;
+  string title,link,description,an_item,rating,length ,line ,a_filename;
   double t_length = -1; // for debugging
   int t_rating = -2; // for debugging
   cout << "looking file..... Done\n" << endl;
@@ -79,7 +79,7 @@ void Vlist::read_from_file(){
             else if(count == 1)
            link = an_item;
             else if(count == 2)
-            comment = an_item;
+            description = an_item;
             else if(count == 3){
            length = an_item;
            t_length = atof(length.c_str());
@@ -94,7 +94,7 @@ void Vlist::read_from_file(){
    
       if (check_duplicates(title) == false){
           //if no duplicates create new VIDEO objects DYNAMICALLY
-          Video *video_ptr = new Video(title,link,comment,t_length ,t_rating );
+          Video *video_ptr = new Video(title,link,description,t_length ,t_rating );
           // passing pointer to object in vlist
           insert(video_ptr);
           //list.write_to_file(video_ptr);
@@ -430,7 +430,7 @@ void Vlist::lookup_expression(string rg_xp){
                               is_found = true;
                          
                          }
-                         if(regex_search(ptr->m_video_ptr->m_comment, search_exp))
+                         if(regex_search(ptr->m_video_ptr->m_description, search_exp))
                         {
                               ptr->m_video_ptr->print();  
                               is_found = true;

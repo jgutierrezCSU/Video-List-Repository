@@ -12,7 +12,7 @@ string lookup_video;
 string remove_video;
 string title;
 string link;
-string comment;
+string description;
 float length;
 int rating;
 int videoCount = 0;
@@ -21,7 +21,7 @@ string rg_expression = "";
 void cmd_help()
 {
 
-	cout << "OPTIONS:\ninsert: Insert a new video into the linked list (Title,  url, comment,length,rating)"<< endl;
+	cout << "OPTIONS:\ninsert: Insert a new video into the linked list (Title,  url, description,length,rating)"<< endl;
 	cout << "print: Print  all  the  videos  in  thelist  " << endl;
 	cout << "length: Print the number of videos in the list as a single integer" << endl;
 	cout << "lookup: If given title is in the list, print the video " << endl;
@@ -62,8 +62,8 @@ int main()
 					getline(cin,title);
 					cout << "Link: " ;
 					getline(cin,link);
-					cout << "Comment: " ;
-					getline(cin,comment);
+					cout << "description: " ;
+					getline(cin,description);
 					cout << "Length (float): ";
 					cin >> length;
 					cout << "Rating (int): ";
@@ -79,7 +79,7 @@ int main()
 					//false means no duplicates
 					if (list.check_duplicates(title) == false){
 					//if no duplicates create new VIDEO objects DYNAMICALLY
-					Video *video_ptr = new Video(title,link,comment,length ,rating );
+					Video *video_ptr = new Video(title,link,description,length ,rating );
 					// passing pointer to object in vlist
 					list.insert(video_ptr);
 					//list.write_to_file(video_ptr);
@@ -161,7 +161,7 @@ int main()
 		else if (command == "lookup_expression")
 		{
 			
-			cout << "Enter regular expression (searches titles AND Comments)" << endl;
+			cout << "Enter regular expression (searches titles AND descriptions)" << endl;
 			cout << ":";
 			getline(cin, rg_expression);
 			list.lookup_expression(rg_expression);

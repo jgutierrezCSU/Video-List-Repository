@@ -11,18 +11,18 @@ using namespace std;
 Video *video_array[MAX];
 
 
-Video::Video(string title , string link, string comment,double length , int rating)
+Video::Video(string title , string link, string description,double length , int rating)
 {
     m_title = title;
     m_link = link;
-    m_comment = comment;
+    m_description = description;
     m_length = length;
     m_rating = rating;
 }
 
 void Video::print()
 {
-    cout << m_title << ", " << m_link << ", " << m_comment << ", ";
+    cout << m_title << ", " << m_link << ", " << m_description << ", ";
     cout << m_length << ", " ;
     //
 
