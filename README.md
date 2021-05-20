@@ -1,6 +1,8 @@
 # Video-List-Repository
 [![Build Status](https://travis-ci.org/jgutierrezCSU/Video-List-Repository.svg?branch=main)](https://travis-ci.org/jgutierrezCSU/Video-List-Repository)
 
+[![Coverage Status](https://coveralls.io/repos/github/jgutierrezCSU/Video-List-Repository/badge.svg?branch=main)](https://coveralls.io/github/jgutierrezCSU/Video-List-Repository?branch=main)
+
 Implement a linked-list of pointers to objects.
 •working with abstract data types
 •information hiding
