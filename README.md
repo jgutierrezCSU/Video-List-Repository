@@ -1,4 +1,6 @@
 # Video-List-Repository
+[![Build Status](https://travis-ci.org/jgutierrezCSU/Video-List-Repository.svg?branch=main)](https://travis-ci.org/jgutierrezCSU/Video-List-Repository)
+
 Implement a linked-list of pointers to objects.
 •working with abstract data types
 •information hiding
