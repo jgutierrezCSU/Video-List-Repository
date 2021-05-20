@@ -1,15 +1,53 @@
-# Makefile for 211 p3 assignment
+# Building GoogleTest and running exercise-gtest unit tests against
+# This Makefile is based on the sample Makefile provided in the 
+# official GoogleTest GitHub Repo v1.7
+
+# REMOVED FOR REQUIRED ENV in CI GTEST_DIR = /usr/local/src/googletest/googletest
+
+# Flags passed to the preprocessor and compiler
+CPPFLAGS += --coverage -std=c++11 -isystem $(GTEST_DIR)/include
+CXXFLAGS += -g -Wall -Wextra -pthread
+
+# All tests produced by this Makefile.
+TESTS = PiezasTest
+
+# All Google Test headers. Adjust only if you moved the subdirectory
+GTEST_HEADERS = $(GTEST_DIR)/include/gtest/*.h \
+                $(GTEST_DIR)/include/gtest/internal/*.h
+
+# House-keeping build targets.
+
+all : $(TESTS)
+
+clean :
+	rm -f $(TESTS) gtest.a gtest_main.a *.o *.gcov *.gcda *.gcno *.gch
+
+test:
+	./VideoListTest 
+	gcov -fbc vlist.cpp
+
+# Builds gtest.a and gtest_main.a.
+
+
+# Original Makefile 
 vlist: video.o main.o vlist.o
 	g++ -Wall -pedantic -g -o vlist video.o main.o vlist.o
 
-main.o: main.cpp video.h vlist.h
-	g++ -Wall -pedantic -g -std=c++11 -c main.cpp
+main.o: main.cpp video.h vlist.h $(GTEST_HEADERS)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) g++ -Wall -pedantic -g -std=c++11 -c main.cpp
 
-video.o: video.h video.cpp
-	g++ -Wall -pedantic -g -std=c++11 -c video.cpp
+video.o: video.h video.cpp $(GTEST_HEADERS)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) g++ -Wall -pedantic -g -std=c++11 -c video.cpp
 
-vlist.o: vlist.h vlist.cpp video.h
-	g++ -Wall -pedantic -g -std=c++11 -c vlist.cpp
+vlist.o: vlist.h vlist.cpp video.h  $(GTEST_HEADERS)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) g++ -Wall -pedantic -g -std=c++11 -c vlist.cpp
+	
+videoListCoverallTest.o : videoListCoverallTest.cpp \
+                     vlist.h video.h $(GTEST_HEADERS)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c videoListCoverallTest.cpp
+
+videoListCoverallTest : main.o vlist.o video.o videoListCoverallTest.o gtest_main.a
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@
 
 clean:
 	rm -f video.o main.o vlist.o vlist vlist.exe
