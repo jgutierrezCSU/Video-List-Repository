@@ -1,0 +1,11 @@
+  
+sudo: enabled
+
+language: cpp
+
+
+script:
+  - make clean
+  - make
+after_success:
+  - coveralls --exclude *Test.cpp --exclude gtest/ --gcov-options '\-lpbc'
