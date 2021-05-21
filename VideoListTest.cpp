@@ -13,3 +13,8 @@ class VideoListTest : public ::testing::Test
 		virtual void SetUp(){} //sets up before each test (after constructor)
 		virtual void TearDown(){} //clean up after each test, (before destructor) 
 };
+
+TEST(VideoListTest, sanityCheck)
+{
+	ASSERT_TRUE(true);
+}
