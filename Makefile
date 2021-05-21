@@ -64,5 +64,3 @@ VideoListTest.o : VideoListTest.cpp \
 VideoListTest : main.o vlist.o video.o VideoListTest.o gtest_main.a
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@
 
-clean:
-	rm -f video.o main.o vlist.o vlist vlist.exe
