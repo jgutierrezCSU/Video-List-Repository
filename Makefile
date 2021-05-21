@@ -45,22 +45,15 @@ gtest_main.a : gtest-all.o gtest_main.o
 	$(AR) $(ARFLAGS) $@ $^
 
 # Builds the VideoList class and associated VideoListTes
-vlist: video.o main.o vlist.o
-	g++ -Wall -pedantic -g -o vlist video.o main.o vlist.o
 
-main.o: main.cpp video.h vlist.h $(GTEST_HEADERS)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) g++ -Wall -pedantic -g -std=c++11 -c main.cpp
 
-video.o: video.h video.cpp $(GTEST_HEADERS)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) g++ -Wall -pedantic -g -std=c++11 -c video.cpp
-
-vlist.o: vlist.h vlist.cpp video.h  $(GTEST_HEADERS)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) g++ -Wall -pedantic -g -std=c++11 -c vlist.cpp
+vlist.o: vlist.h $(GTEST_HEADERS)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c vlist.cpp
 	
 VideoListTest.o : VideoListTest.cpp \
-                     vlist.h video.h $(GTEST_HEADERS)
+                     vlist.h $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c VideoListTest.cpp
 
-VideoListTest : main.o vlist.o video.o VideoListTest.o gtest_main.a
+VideoListTest : vlist.o  VideoListTest.o gtest_main.a
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@
 
