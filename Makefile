@@ -57,11 +57,11 @@ video.o: video.h video.cpp $(GTEST_HEADERS)
 vlist.o: vlist.h vlist.cpp video.h  $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) g++ -Wall -pedantic -g -std=c++11 -c vlist.cpp
 	
-videoListCoverallTest.o : videoListCoverallTest.cpp \
+VideoListTest.o : VideoListTest.cpp \
                      vlist.h video.h $(GTEST_HEADERS)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c videoListCoverallTest.cpp
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c VideoListTest.cpp
 
-videoListCoverallTest : main.o vlist.o video.o videoListCoverallTest.o gtest_main.a
+VideoListTest : main.o vlist.o video.o VideoListTest.o gtest_main.a
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@
 
 clean:
