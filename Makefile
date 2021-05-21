@@ -3,7 +3,7 @@
 # official GoogleTest GitHub Repo v1.7
 
 # REMOVED FOR REQUIRED ENV in CI 
-#export GTEST_DIR = /usr/local/src/googletest/googletest
+export GTEST_DIR = /usr/local/src/googletest/googletest
 
 # Flags passed to the preprocessor and compiler
 CPPFLAGS += --coverage -std=c++11 -isystem $(GTEST_DIR)/include
