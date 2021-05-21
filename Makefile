@@ -2,7 +2,8 @@
 # This Makefile is based on the sample Makefile provided in the 
 # official GoogleTest GitHub Repo v1.7
 
- REMOVED FOR REQUIRED ENV in CI GTEST_DIR = /usr/local/src/googletest/googletest
+# REMOVED FOR REQUIRED ENV in CI 
+GTEST_DIR = /usr/local/src/googletest/googletest
 
 # Flags passed to the preprocessor and compiler
 CPPFLAGS += --coverage -std=c++11 -isystem $(GTEST_DIR)/include
