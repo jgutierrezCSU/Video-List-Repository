@@ -9,7 +9,7 @@ CPPFLAGS += --coverage -std=c++11 -isystem $(GTEST_DIR)/include
 CXXFLAGS += -g -Wall -Wextra -pthread
 
 # All tests produced by this Makefile.
-TESTS = PiezasTest
+TESTS = VideoListTest
 
 # All Google Test headers. Adjust only if you moved the subdirectory
 GTEST_HEADERS = $(GTEST_DIR)/include/gtest/*.h \
