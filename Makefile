@@ -27,9 +27,23 @@ test:
 	gcov -fbc vlist.cpp
 
 # Builds gtest.a and gtest_main.a.
+GTEST_SRCS_ = $(GTEST_DIR)/src/*.cc $(GTEST_DIR)/src/*.h $(GTEST_HEADERS)
 
+gtest-all.o : $(GTEST_SRCS_)
+	$(CXX) $(CPPFLAGS) -I$(GTEST_DIR) $(CXXFLAGS) -c \
+            $(GTEST_DIR)/src/gtest-all.cc
+	    
+gtest_main.o : $(GTEST_SRCS_)
+	$(CXX) $(CPPFLAGS) -I$(GTEST_DIR) $(CXXFLAGS) -c \
+            $(GTEST_DIR)/src/gtest_main.cc
+	    
+gtest.a : gtest-all.o
+	$(AR) $(ARFLAGS) $@ $^
+	
+gtest_main.a : gtest-all.o gtest_main.o
+	$(AR) $(ARFLAGS) $@ $^
 
-# Original Makefile 
+# Builds the VideoList class and associated VideoListTes
 vlist: video.o main.o vlist.o
 	g++ -Wall -pedantic -g -o vlist video.o main.o vlist.o
 
