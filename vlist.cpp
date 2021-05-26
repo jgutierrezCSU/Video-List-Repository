@@ -56,7 +56,7 @@ void Vlist::write_to_file(){
 
 
 }
-void Vlist::read_from_file(){
+void Vlist::load_from_file(){
 
   string title,link,description,an_item,rating,length ,line ,a_filename;
   double t_length = -1; // for debugging

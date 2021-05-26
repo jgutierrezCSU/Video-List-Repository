@@ -7,22 +7,13 @@ using namespace std;
 #include "video.h"
 #include "vlist.h"
 
-Vlist list;
-string lookup_video;
-string remove_video;
-string title;
-string link;
-string description;
-float length;
-int rating;
-int videoCount = 0;
-string rg_expression = "";
+
 
 void cmd_help()
 {
 
 	cout << "OPTIONS:\ninsert: Insert a new video into the linked list (Title,  url, description,length,rating)"<< endl;
-	cout << "print: Print  all  the  videos  in  thelist  " << endl;
+	cout << "print: Print  all  the  videos  in  the list  " << endl;
 	cout << "length: Print the number of videos in the list as a single integer" << endl;
 	cout << "lookup: If given title is in the list, print the video " << endl;
 	cout << "remove: Remove given title if in list" << endl;
@@ -31,24 +22,34 @@ void cmd_help()
 	cout << "sort_by_title: Sorts videos in list alphabetically title (ascending)" << endl;
 	cout << "lookup_expression: Use any regular expression to search through list."<< endl;
 	cout << "exit: Exit program\n" << endl;
-	
 
+	
 }
 
 
 
 int main()
 {
-	//command given by user , needs to be insert , remove ,print , length or lookup.Else will terminate w/ cerr
+	//Declerations
+	Vlist list;
+	string lookup_video;
+	string remove_video;
+	string title;
+	string link;
+	string description;
+	float length;
+	int rating;
+	int videoCount = 0;
+	string rg_expression = "";	
+	//command given by user , needs to be insert , remove ,print , length or lookup. Else will terminate w/ cerr
 	string command;
 	const int MAX = 1000;
 
-	cmd_help();
+	cmd_help(); // Show help at program start up
 
-	//
-	// reads from file previoulsy written in
+	// reads from file that was previoulsy saved
 	// funtion has local file where videos are stored, these file are loaded here
-	list.read_from_file();
+	list.load_from_file();
 	
 	// while loop for user input
 	while(getline(cin, command))
