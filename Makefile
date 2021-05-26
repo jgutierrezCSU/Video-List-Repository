@@ -1,15 +1,59 @@
-# Makefile for 211 p3 assignment
-vlist: video.o main.o vlist.o
-	g++ -Wall -pedantic -g -o vlist video.o main.o vlist.o
+# Building GoogleTest and running exercise-gtest unit tests against
+# This Makefile is based on the sample Makefile provided in the 
+# official GoogleTest GitHub Repo v1.7
 
-main.o: main.cpp video.h vlist.h
-	g++ -Wall -pedantic -g -std=c++11 -c main.cpp
+# REMOVED FOR REQUIRED ENV in CI 
+export GTEST_DIR = /usr/local/src/googletest/googletest
 
-video.o: video.h video.cpp
-	g++ -Wall -pedantic -g -std=c++11 -c video.cpp
+# Flags passed to the preprocessor and compiler
+CPPFLAGS += --coverage -std=c++11 -isystem $(GTEST_DIR)/include
+CXXFLAGS += -g -Wall -Wextra -pthread
 
-vlist.o: vlist.h vlist.cpp video.h
-	g++ -Wall -pedantic -g -std=c++11 -c vlist.cpp
+# All tests produced by this Makefile.
+TESTS = VideoListTest
 
-clean:
-	rm -f video.o main.o vlist.o vlist vlist.exe
+# All Google Test headers. Adjust only if you moved the subdirectory
+GTEST_HEADERS = $(GTEST_DIR)/include/gtest/*.h \
+                $(GTEST_DIR)/include/gtest/internal/*.h
+
+# House-keeping build targets.
+
+all : $(TESTS)
+
+clean :
+	rm -f $(TESTS) gtest.a gtest_main.a *.o *.gcov *.gcda *.gcno *.gch
+
+test:
+	./VideoListTest 
+	gcov -fbc vlist.cpp
+
+# Builds gtest.a and gtest_main.a.
+GTEST_SRCS_ = $(GTEST_DIR)/src/*.cc $(GTEST_DIR)/src/*.h $(GTEST_HEADERS)
+
+gtest-all.o : $(GTEST_SRCS_)
+	$(CXX) $(CPPFLAGS) -I$(GTEST_DIR) $(CXXFLAGS) -c \
+            $(GTEST_DIR)/src/gtest-all.cc
+	    
+gtest_main.o : $(GTEST_SRCS_)
+	$(CXX) $(CPPFLAGS) -I$(GTEST_DIR) $(CXXFLAGS) -c \
+            $(GTEST_DIR)/src/gtest_main.cc
+	    
+gtest.a : gtest-all.o
+	$(AR) $(ARFLAGS) $@ $^
+	
+gtest_main.a : gtest-all.o gtest_main.o
+	$(AR) $(ARFLAGS) $@ $^
+
+# Builds the VideoList class and associated VideoListTes
+
+
+vlist.o: vlist.h $(GTEST_HEADERS)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c vlist.cpp
+	
+VideoListTest.o : VideoListTest.cpp \
+                     vlist.h $(GTEST_HEADERS)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c VideoListTest.cpp
+
+VideoListTest : vlist.o  VideoListTest.o gtest_main.a
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@
+
