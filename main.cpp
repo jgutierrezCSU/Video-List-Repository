@@ -41,6 +41,7 @@ int main()
 	int rating;
 	int videoCount = 0;
 	string rg_expression = "";	
+	
 	//command given by user , needs to be insert , remove ,print , length or lookup. Else will terminate w/ cerr
 	string command;
 	const int MAX = 1000;
