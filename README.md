@@ -10,10 +10,10 @@ Implement a linked-list of pointers to objects.
 
 --- NOT UPDATED ------
 
-INSERT:
+INSERT: 
 
 ![alt text](https://github.com/jgutierrezCSU/Video-List-Repository/blob/main/imgs/insert.JPG?raw=true)
 
-SORT: 
+SORT: (Any type of sorting is done temporarily, will revert to when exiting program)
 
 ![alt text](https://github.com/jgutierrezCSU/Video-List-Repository/blob/main/imgs/sort.JPG?raw=true)
