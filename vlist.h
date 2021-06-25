@@ -45,8 +45,8 @@ class Vlist
       Node* sort_by_rating();
       Node* sort_by_title();
       void lookup_expression(string rg_xp);
-      void write_to_file();
-      void read_from_file();
+      void write_to_file(bool from_user,string save_File_as);
+      void load_from_file();
 	  
 }; // don't forget this ;
 

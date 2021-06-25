@@ -21,6 +21,7 @@ void cmd_help()
 	cout << "sort_by_rating: Sorts videos in list ordered by rating (short to long)" << endl;
 	cout << "sort_by_title: Sorts videos in list alphabetically title (ascending)" << endl;
 	cout << "lookup_expression: Use any regular expression to search through list."<< endl;
+	cout << "save: Save current state of repository locally" << endl;
 	cout << "exit: Exit program\n" << endl;
 
 	
@@ -41,6 +42,7 @@ int main()
 	int rating;
 	int videoCount = 0;
 	string rg_expression = "";	
+	string save_File_as ="";
 	
 	//command given by user , needs to be insert , remove ,print , length or lookup. Else will terminate w/ cerr
 	string command;
@@ -167,6 +169,15 @@ int main()
 			cout << ":";
 			getline(cin, rg_expression);
 			list.lookup_expression(rg_expression);
+			
+
+		}
+		else if (command == "save")
+		{
+			
+			cout << "Save as : ";
+			getline(cin, save_File_as);
+			list.write_to_file(true, save_File_as);
 			
 
 		}

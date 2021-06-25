@@ -6,6 +6,7 @@
 #include<iostream>
 #include "vlist.h"
 #include<regex> 
+#include <sstream>
 using namespace std;
 
   
@@ -16,46 +17,59 @@ using namespace std;
   }
 
 
-
-void Vlist::write_to_file(){
-
-
+// first parameter is true if user chose "save"
+// second parameter is the file name given by user otherwise default name of "vlr.csv"
+void Vlist::write_to_file(bool from_user,string save_File_as)
+{
   // function creates a local saved csv file after insert, video list was sorted or item was removed.
 
+    
     ofstream myfile;
-    myfile.open ("vlr.csv");
-    string a_String = "";
-    string a_final_string = "";
-    Node *ptr = m_head;
+    // if user chose "save option", save it as user given file name
+    if (from_user == true)
+    {
 
-    // pointer goes through the list and appends each video on the list after it already has been sorted
-    while(ptr != NULL)
-    { 
-
-      string tmp_length= to_string(ptr->m_video_ptr->m_length);
-      string a_length =tmp_length.substr (0,5); // arbitrary length size
-      a_length=remove_trailing_zeros(a_length);
-
-        a_String= ptr->m_video_ptr->m_title + "," + ptr->m_video_ptr->m_link + "," + ptr->m_video_ptr->m_description + "," + a_length + "," ;
-        string a_Rating_string = "";
-    
-        for (int ratingCount = 0; ratingCount < ptr->m_video_ptr->m_rating; ratingCount++){
-             a_Rating_string = "*" + a_Rating_string;
-          }
-    
-        a_final_string= a_String + a_Rating_string + "\n";
-
-      myfile << a_final_string;
-     
-
-      ptr = ptr->m_next;
+      myfile.open (save_File_as);
     }
+    // else it is stored to the default file of "vlr.csv"
+    else if(from_user == false)
+    {
+      myfile.open (save_File_as);
 
-     myfile.close();
+    }
+      string a_String = "";
+      string a_final_string = "";
+      Node *ptr = m_head;
 
+      // pointer goes through the list and appends each video on the list after it already has been sorted
+      while(ptr != NULL)
+      { 
 
+        string tmp_length= to_string(ptr->m_video_ptr->m_length);
+        string a_length =tmp_length.substr (0,5); // arbitrary length size
+        a_length=remove_trailing_zeros(a_length);
+
+          a_String= ptr->m_video_ptr->m_title + "," + ptr->m_video_ptr->m_link + "," + ptr->m_video_ptr->m_description + "," + a_length + "," ;
+          string a_Rating_string = "";
+      
+          for (int ratingCount = 0; ratingCount < ptr->m_video_ptr->m_rating; ratingCount++){
+              a_Rating_string = "*" + a_Rating_string;
+            }
+      
+          a_final_string= a_String + a_Rating_string + "\n";
+
+        myfile << a_final_string;
+      
+
+        ptr = ptr->m_next;
+      }
+
+      myfile.close();
+    
 
 }
+  // reads from file that was previoulsy saved
+	// funtion has local file where videos are stored, these file are loaded here
 void Vlist::load_from_file(){
 
   string title,link,description,an_item,rating,length ,line ,a_filename;
@@ -132,7 +146,7 @@ bool Vlist::remove(string remove_video)
     delete temp;
 
       //list modified, update local csv
-      write_to_file();
+      write_to_file(false,"vlr.csv");
 
   }
   else
@@ -152,7 +166,7 @@ bool Vlist::remove(string remove_video)
     delete temp;
 
     //list modified, update local csv
-    write_to_file();
+    write_to_file(false,"vlr.csv");
 
   }  
   cout << "Removed.." << endl;
@@ -182,7 +196,7 @@ void Vlist::insert(Video *video_ptr)
     
   }
   //list modified, update local csv
-  write_to_file();
+  write_to_file(false,"vlr.csv");
 
 
 }
@@ -415,6 +429,8 @@ Vlist::Node *Vlist:: partition( Node *head,  Node *end,  Node **newHead,  Node *
     return newHead; 
 } 
 
+// function matches given pattern using regular expression
+// Searches title and description
 void Vlist::lookup_expression(string rg_xp){
     bool is_found =false;
             
