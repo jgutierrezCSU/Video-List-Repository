@@ -12,7 +12,6 @@ Implement a linked-list of pointers to objects.
 
 ![alt text](https://github.com/jgutierrezCSU/Video-List-Repository/blob/main/imgs/cmds.png?raw=true)
 
---- NOT UPDATED ------
 
 INSERT: 
 
