@@ -20,4 +20,4 @@ INSERT:
 
 SORT: (Any type of sorting is done temporarily, will revert to when exiting program)
 
-![alt text](https://github.com/jgutierrezCSU/Video-List-Repository/blob/main/imgs/sort.JPG?raw=true)
+<img align="center" alt="GIF" src="https://github.com/jgutierrezCSU/Video-List-Repository/blob/main/imgs/2.gif" width="650"/>
