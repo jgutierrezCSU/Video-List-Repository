@@ -15,7 +15,9 @@ Implement a linked-list of pointers to objects.
 --- NOT UPDATED ------
 
 INSERT: 
-<img align="center" alt="GIF" src="https://github.com/jgutierrezCSU/repoCopy/blob/master/generated/languages.svg" width="440"/>
+
+<img align="center" alt="GIF" src="https://github.com/jgutierrezCSU/Video-List-Repository/blob/main/imgs/Kapture%202.gif" width="440"/>
+
 ![alt text](https://github.com/jgutierrezCSU/Video-List-Repository/blob/main/imgs/insert.JPG?raw=true)
 
 SORT: (Any type of sorting is done temporarily, will revert to when exiting program)
