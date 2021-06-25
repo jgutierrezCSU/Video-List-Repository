@@ -18,6 +18,6 @@ INSERT:
 
 <img align="center" alt="GIF" src="https://github.com/jgutierrezCSU/Video-List-Repository/blob/main/imgs/1.gif" width="650"/>
 
-SORT: (Any type of sorting is done temporarily, will revert to when exiting program)
+SORT: (Sorting by length.Any type of sorting is done temporarily, will revert to when exiting program)
 
 <img align="center" alt="GIF" src="https://github.com/jgutierrezCSU/Video-List-Repository/blob/main/imgs/2.gif" width="650"/>
